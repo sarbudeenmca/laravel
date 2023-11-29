@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1><?= $page_title ?></h1>
+    <h1><?= $title1 ." ". $title2; ?></h1>
     <?= session('message') ?>
     <form action="<?= url('get_userdata') ?>" method="post">
         <label>Name:</label>

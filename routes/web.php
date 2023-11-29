@@ -19,12 +19,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('contact');
-});
-
-Route::get('/user_form', function () {
-    $page_title = "Send User information";
-    return view('user_form',  ['page_title' => $page_title]);
+    $title1 = "Title 1";
+    $title2 = "Title 2";
+    return view('home', compact('title1', 'title2'));
+    // return view('home')->withTitle1($title1)->withTitle2($title2); //magic method
 });
 
 Route::post('get_userdata', function (Request $req) {
@@ -33,6 +31,9 @@ Route::post('get_userdata', function (Request $req) {
     $email = $req->input('email');
     $mobile = $req->input('mobile');
     // return "Your Name: " . $name . "<br> Email: " . $email . "<br>Mobile: " . $mobile;
+    return redirect('/')->with('message', 'Form Successfully Submitted');
+});
 
-    return redirect('user_form')->with('message', 'Form Successfully Submitted');
+Route::get('/contact', function () {
+    return view('contact');
 });
