@@ -15,4 +15,9 @@ class PostController extends Controller
     {
         return ("<h1>OTP is $otp from PostController</h1>");
     }
+
+    public function postYear($year)
+    {
+        return ("<h1>Current year is $year</h1>");
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MonthController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,13 +48,13 @@ Route::post('get_userdata', function (Request $req) {
 Route::get('month/{num}', function ($num) {
     $month = "";
     if ($num == 1) {
-        $month = "January";
+        $month = "Jan";
     } else if ($num == 2) {
-        $month = "Febraury";
+        $month = "Feb";
     } else if ($num == 3) {
-        $month = "March";
+        $month = "Mar";
     } else if ($num == 4) {
-        $month = "April";
+        $month = "Apr";
     }
     return '<h2>' . $month . '</h2>';
 })->middleware('month');
@@ -91,4 +92,6 @@ Route::prefix('gallery')->middleware('middlewareName')->group(function () {
 
 Route::get('login', [LoginController::class, 'login_form']);
 Route::get('forgot_password', [LoginController::class, 'forgot_password']);
-Route::post('post/{otp}', [PostController::class, 'postOTP']);
+Route::get('post/{otp}', [PostController::class, 'postOTP']);
+Route::get('year/{year}', [PostController::class, 'postYear']);
+Route::get('monthfull/{num}', [MonthController::class, 'numberToMonth']);
