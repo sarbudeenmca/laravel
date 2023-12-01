@@ -17,17 +17,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+#---- Blade Template routes
+Route::view('/', 'home');
+Route::view('/contact', 'contact');
+#---- Other Examples
 
 #---- View
 //with params
-Route::get('/home/{id?}/{title2?}', function ($id = null, $title2 = null) {
+Route::get('/home_old/{id?}/{title2?}', function ($id = null, $title2 = null) {
     $title1 = "First";
-    return view('home', compact('title1', 'title2', 'id'));
+    return view('home_old', compact('title1', 'title2', 'id'));
     // return view('home')->withTitle1($title1)->withTitle2($title2); //magic method
 })->name('home');
 
-Route::get('/contact', function () {
-    return view('contact');
+Route::get('/contact_us', function () {
+    return view('contact_us');
 });
 
 //view method
