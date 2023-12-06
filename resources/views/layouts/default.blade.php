@@ -115,20 +115,12 @@
 
     @include('layouts.includes.header')
 
-    <nav id="navigation" class="top">
-        <ul>
-            <div class="float-right">
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">PORTOFOLIO</a></li>
-                <li><a href="#">ABOUT</a></li>
-            </div>
-        </ul>
-    </nav>
+    @include('layouts.includes.nav')
 
     @section('main-content')
         <section id="container">
         </section>
-    @endsection
+    @show
 
     @include('layouts.includes.footer')
 

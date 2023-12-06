@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\studentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 #---- Blade Template routes
 Route::view('/', 'home');
-Route::view('/contact', 'contact');
+Route::get('/contact', function () {
+    $mobile = '<h2>+971 56 9292 445</h2>';
+    $email = '<h2>sarbudeenmca@gmail.com</h2>';
+    $users = 5;
+    $notAdmin = false;
+    $settings = 'Default Settings';
+    return view('/contact', compact('mobile', 'email', 'users', 'notAdmin', 'settings'));
+});
+
 #---- Other Examples
 
 #---- View
@@ -99,3 +108,12 @@ Route::get('forgot_password', [LoginController::class, 'forgot_password']);
 Route::get('post/{otp}', [PostController::class, 'postOTP']);
 Route::get('year/{year}', [PostController::class, 'postYear']);
 Route::get('monthfull/{num}', [MonthController::class, 'numberToMonth']);
+
+#---- Database Examples
+Route::get('/insert_form', [studentController::class, 'insert_form']);
+Route::post('/create', [studentController::class, 'insert']);
+Route::get('/view_students', [studentController::class, 'students_list']);
+Route::get('/edit/{id}', [studentController::class, 'retrive']);
+Route::post('/edit/{id}', [studentController::class, 'update']);
+Route::get('/delete/{id}', [studentController::class, 'delete']);
+Route::get('/deleteall', [studentController::class, 'delete_all']);
