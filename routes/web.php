@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MonthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\studentController;
+use App\Http\Controllers\userController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -117,3 +118,10 @@ Route::get('/edit/{id}', [studentController::class, 'retrive']);
 Route::post('/edit/{id}', [studentController::class, 'update']);
 Route::get('/delete/{id}', [studentController::class, 'delete']);
 Route::get('/deleteall', [studentController::class, 'delete_all']);
+
+Route::get('create_user', [userController::class, 'create']);
+Route::post('store', [userController::class, 'store']);
+Route::get('list_user', [userController::class, 'list']);
+Route::post('update/{id}', [userController::class, 'update']);
+Route::get('edit_user/{id}', [userController::class, 'edit']);
+Route::get('delete_user/{id}', [userController::class, 'delete']);
